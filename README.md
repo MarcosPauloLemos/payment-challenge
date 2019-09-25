@@ -1,5 +1,5 @@
 # payment-challenge
-Pequeno conceito de micro serviço. Em desafio de uma API de pagamentos da Wirecard.
+Pequeno conceito de microserviços. Em desafio de uma API de pagamentos da Wirecard.
 
 
 # Sobre o Projeto
