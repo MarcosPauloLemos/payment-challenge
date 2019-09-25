@@ -12,7 +12,7 @@ Pequeno conceito de microserviços. Em desafio de uma API de pagamentos da Wirec
  
  Todas as informações são persistidas em um banco relacional (PostgreSQL).
  
- Nos pagamentos com cartão de crédito, o limite de crédito de cliente é simulado em tempo de execução de cada pagamento. Gerando um número positivo aleatório com o intervalo máximo de R$10000.
+ Nos pagamentos com cartão de crédito, o limite de crédito do cliente é simulado em tempo de execução de cada pagamento. Gerando um número positivo aleatório com o intervalo máximo de R$10000.
  
  Nos pagamentos com boleto, é gerado um número aleatório referente ao código do boleto e o pagamento ficará com o status de pendente.
 
