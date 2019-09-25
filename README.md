@@ -193,5 +193,5 @@ obs: para {cpf} = 1236547898
 ## Mais informações
 Para mais informações ou importação dos exemplos utilizar a documentação disponíveis nos links
 (é necessário estar com a aplicação em execução):
-Para payment-service: http://localhost:18081/swagger-ui.html
-Para authorizer-service: http://localhost:18081/swagger-ui.html
+*Para payment-service: http://localhost:18080/swagger-ui.html
+*Para authorizer-service: http://localhost:18081/swagger-ui.html
