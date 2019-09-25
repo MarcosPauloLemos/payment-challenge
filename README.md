@@ -4,8 +4,6 @@ Pequeno conceito de microserviços. Em desafio de uma API de pagamentos da Wirec
 
 # Sobre o Projeto
 
-O Projeto foi inspirado em uma arquitetura de micro serviços simplificada. Sendo assim o desafio foi dividido em duas aplicações.
-
  O Projeto foi inspirado em uma arquitetura de micro serviços simplificada. Sendo assim, o desafio foi dividido em duas aplicações.
  
  A Primeira aplicação se chama payment-service, e é responsável por se comunicar com o checkout/front-end/terminal da plataforma que solicitará o pagamento. Em seguida, irá identificar o modelo do pagamento e enviar as informações necessárias, para que um segundo serviço possa fazer a liberação.
