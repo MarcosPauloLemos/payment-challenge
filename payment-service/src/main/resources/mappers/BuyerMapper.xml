@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="br.com.challenge.mapper.BuyerMapper">
+    <select id="findByCpf" resultType="br.com.challenge.model.Buyer">
+        SELECT
+            ps01a_id     AS id,
+            ps01a_name   AS name,
+            ps01a_email  AS email,
+            ps01a_cpf    AS cpf
+        FROM payment_service.ps01a_buyer
+        WHERE ps01a_cpf = #{cpf}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="buyer.id" keyColumn="ps01a_id">
+        INSERT INTO payment_service.ps01a_buyer(ps01a_name,ps01a_email,ps01a_cpf)
+        VALUES (
+            #{buyer.name},
+            #{buyer.email},
+            #{buyer.cpf}
+        )
+    </insert>
+</mapper>

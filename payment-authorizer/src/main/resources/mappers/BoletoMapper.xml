@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="br.com.challenge.mapper.BoletoMapper">
+
+    <resultMap id="Boleto" type="br.com.challenge.model.Boleto">
+        <result column="pa01a_id"              property="id"            />
+        <result column="pa01a_id_client"       property="clientId"      />
+        <result column="pa01a_number"          property="number"        />
+        <result column="pa01a_amount"          property="amount"        />
+        <result column="pa01a_status"          property="statusCod"     />
+        <result column="pa01a_paymento_number" property="paymentNumber" />
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="boleto.id" keyColumn="pa01a_id">
+        INSERT INTO payment_authorizer.pa01a_boleto
+            (pa01a_id_client,pa01a_number,pa01a_amount,pa01a_status,pa01a_paymento_number)
+        VALUES
+        (
+            #{boleto.clientId},
+            #{boleto.number},
+            #{boleto.amount},
+            #{boleto.statusCod},
+            #{boleto.paymentNumber}
+        )
+    </insert>
+
+    <select id="findBy" resultMap="Boleto">
+        SELECT
+            pa01a_id,
+            pa01a_id_client,
+            pa01a_number,
+            pa01a_amount,
+            pa01a_status,
+            pa01a_paymento_number
+        FROM payment_authorizer.pa01a_boleto
+        WHERE pa01a_id = #{authorizerNumber}
+    </select>
+</mapper>

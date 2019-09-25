@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="br.com.challenge.mapper.PaymentMapper">
+    
+    <resultMap id="Payment" type="br.com.challenge.model.Payment">
+        <result column="ps02a_id"                property="id"               />
+        <result column="ps02a_id_client"         property="clientId"         />
+        <result column="ps02a_amount"            property="amount"           />
+        <result column="ps02a_type"              property="typeCod"          />
+        <result column="ps02a_status"            property="statusCod"        />
+        <result column="ps02a_card_number"       property="cardNumber" />
+        <result column="ps02a_boleto_number"     property="boletoNumber" />
+        <result column="ps02a_authorizer_number" property="authorizerNumber" />
+        <result column="ps01a_id"                property="buyer.id"         />
+        <result column="ps01a_name"              property="buyer.name"       />
+        <result column="ps01a_email"             property="buyer.email"      />
+        <result column="ps01a_cpf"               property="buyer.cpf"        />
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="payment.id" keyColumn="ps02a_id">
+        INSERT INTO payment_service.ps02a_payment(ps02a_id_client,ps02a_id_buyer,ps02a_amount,ps02a_type,ps02a_status)
+        VALUES
+        (
+            #{payment.clientId},
+            #{payment.buyer.id},
+            #{payment.amount},
+            #{payment.typeCod},
+            #{payment.statusCod}
+        )
+    </insert>
+
+    <update id="updateStatus">
+        update payment_service.ps02a_payment set ps02a_status = #{payment.statusCod}
+        where ps02a_id = #{payment.id}
+    </update>
+
+    <update id="updateStatusBoletoAuthorizerNumber">
+        update payment_service.ps02a_payment
+        set
+            ps02a_status = #{payment.statusCod},
+            ps02a_boleto_number = #{payment.boletoNumber},
+            ps02a_authorizer_number = #{payment.authorizerNumber}
+        where ps02a_id = #{payment.id}
+    </update>
+
+    <update id="updateStatusCardAuthorizerNumber">
+            update payment_service.ps02a_payment
+        set
+            ps02a_status = #{payment.statusCod},
+            ps02a_card_number = #{payment.cardNumber},
+            ps02a_authorizer_number = #{payment.authorizerNumber}
+        where ps02a_id = #{payment.id}
+    </update>
+
+    <select id="clientPayments" resultMap="Payment">
+        select
+            ps02a_id                ,
+            ps02a_id_client         ,
+            ps02a_id_buyer          ,
+            ps02a_amount            ,
+            ps02a_type              ,
+            ps02a_status            ,
+            ps02a_card_number       ,
+            ps02a_boleto_number     ,
+            ps02a_authorizer_number ,
+            ps01a_id                ,
+            ps01a_name              ,
+            ps01a_email             ,
+            ps01a_cpf
+        from payment_service.ps02a_payment
+        inner join payment_service.ps01a_buyer on ps01a_id = ps02a_id_client
+        where ps02a_id_client = #{clientId}
+    </select>
+
+    <select id="buyerPayments" resultMap="Payment">
+        select
+            ps02a_id                ,
+            ps02a_id_client         ,
+            ps02a_id_buyer          ,
+            ps02a_amount            ,
+            ps02a_type              ,
+            ps02a_status            ,
+            ps02a_card_number       ,
+            ps02a_boleto_number     ,
+            ps02a_authorizer_number ,
+            ps01a_id                ,
+            ps01a_name              ,
+            ps01a_email             ,
+            ps01a_cpf
+        from payment_service.ps01a_buyer
+        inner join payment_service.ps02a_payment on ps02a_id_client = ps01a_id
+        where ps01a_cpf = #{cpf}
+    </select>
+
+    <select id="paymentForAuthorizerNumber" resultMap="Payment">
+        select
+            ps02a_id                ,
+            ps02a_id_client         ,
+            ps02a_id_buyer          ,
+            ps02a_amount            ,
+            ps02a_type              ,
+            ps02a_status            ,
+            ps02a_card_number       ,
+            ps02a_boleto_number     ,
+            ps02a_authorizer_number ,
+            ps01a_id                ,
+            ps01a_name              ,
+            ps01a_email             ,
+            ps01a_cpf
+        from payment_service.ps02a_payment
+        inner join payment_service.ps01a_buyer on ps01a_id = ps02a_id_client
+        where ps02a_authorizer_number = #{authorizerNumber}
+    </select>
+</mapper>

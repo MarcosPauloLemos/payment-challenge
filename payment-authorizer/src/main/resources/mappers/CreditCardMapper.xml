@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="br.com.challenge.mapper.CreditCardMapper">
+    <insert id="insert" useGeneratedKeys="true"  keyProperty="card.id" keyColumn="pa01b_id">
+        INSERT INTO payment_authorizer.pa01b_credit_card
+        (
+            pa01b_id_client,
+            pa01b_holder_name,
+            pa01b_number,
+            pa01b_expiration_date,
+            pa01b_cvv,
+            pa01b_amount,
+            pa01b_payment_number,
+            pa01b_status
+        )
+            VALUES
+        (
+            #{card.clientId},
+            #{card.holderName},
+            #{card.number},
+            #{card.expirationDate},
+            #{card.cvv},
+            #{card.amount},
+            #{card.paymentNumber},
+            #{card.statusCod}
+        )
+    </insert>
+</mapper>

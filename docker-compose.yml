@@ -1,0 +1,45 @@
+version: '3'
+networks: 
+  banco:
+services:
+  database:
+    image: postgres:9.6
+    ports:
+      - 15432:5432
+    environment:
+      - POSTGRES_DB=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./postgresSQL/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - banco
+  payment-authorizer:
+    container_name: pay_at
+    image: maven
+    ports:
+     - "18081:8081"
+    networks:
+      - banco
+    depends_on:
+      - database
+    volumes:
+      - ./payment-authorizer:/payment-authorizer
+    command: 
+      bash -c "cd /payment-authorizer; mvn clean install; 
+      java -Djava.security.egd=file:/dev/./urandom -jar target/app.jar"
+  payment-service:
+    container_name: pay_se
+    image: maven
+    ports:
+     - "18080:8080"
+    networks:
+      - banco
+    depends_on:
+      - database
+      - payment-authorizer
+    volumes:
+      - ./payment-service:/payment-service
+    command: 
+      bash -c "cd /payment-service; mvn clean install; 
+      java -Djava.security.egd=file:/dev/./urandom -jar target/app.jar"

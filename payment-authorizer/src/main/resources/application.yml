@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active:
+  datasource:
+    url: jdbc:postgresql://database:5432/payment_challenge
+    username: postgres
+    password: postgres
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 5000
+mybatis:
+  type-aliases-package: br.com.challenge.model
+  mapper-locations: classpath*:**/mappers/*Mapper.xml
+server:
+  port: 8081
