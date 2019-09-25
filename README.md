@@ -7,14 +7,18 @@ Pequeno conceito de micro serviço. Em desafio de uma API de pagamentos da Wirec
 O Projeto foi inspirado em uma arquitetura de micro serviços simplificada. Sendo assim o desafio foi dividido em duas aplicações.
 
  O Projeto foi inspirado em uma arquitetura de micro serviços simplificada. Sendo assim, o desafio foi dividido em duas aplicações.
+ 
  A Primeira aplicação se chama payment-service, e é responsável por se comunicar com o checkout/front-end/terminal da plataforma que solicitará o pagamento. Em seguida, irá identificar o modelo do pagamento e enviar as informações necessárias, para que um segundo serviço possa fazer a liberação.
+ 
  O Segundo serviço é baseado de maneira simplificada em uma integração bancária. Ele não conhece as informações do comprador. Apenas faz o processamento do cartão de crédito, executa a transação financeira ou registra um número de boleto vinculado ao cliente (Plataforma), que solicitou o pagamento.
+ 
  Todas as informações são persistidas em um banco relacional (PostgreSQL).
-Nos pagamentos com cartão de crédito, o limite de crédito de cliente é simulado em tempo de execução de cada pagamento. Gerando um número positivo aleatório com o intervalo máximo de R$10000.
+ 
+ Nos pagamentos com cartão de crédito, o limite de crédito de cliente é simulado em tempo de execução de cada pagamento. Gerando um número positivo aleatório com o intervalo máximo de R$10000.
+ 
+ Nos pagamentos com boleto, é gerado um número aleatório referente ao código do boleto e o pagamento ficará com o status de pendente.
 
-Nos pagamentos com boleto, é gerado um número aleatório referente ao código do boleto e o pagamento ficará com o status de pendente.
-
-Também é possível recuperar as informações de pagamento de um determinado cliente (Plataforma de pagamento).
+ Também é possível recuperar as informações de pagamento de um determinado cliente (Plataforma de pagamento).
 Ou de compradores, pelo CPF do comprador.
 
 # Tecnologias utilizadas.
@@ -34,7 +38,7 @@ Comando:
 ```
 * $docker-compose up
 ```
-*  poderá demorar alguns minutos dependendo da velocidade da conexão.
+*  Poderá demorar alguns minutos dependendo da velocidade da conexão.
 
 Em seguida, será executado de forma automática os passos para que a aplicação fique disponível. 
 * Passo 1 : Clone da imagem do postgreSQL e execução de script para a criação de estrutura inicial das tabelas.
