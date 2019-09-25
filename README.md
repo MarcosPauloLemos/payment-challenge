@@ -8,7 +8,7 @@ O Projeto foi inspirado em uma arquitetura de micro serviços simplificada. Send
 
 A Primeira aplicação se chama payment-service e é responsável por se comunicar com o checkout/front-end/terminal da plataforma que irá solicitar o pagamento. Em seguida irá identificar o modelo do pagamento e irá enviar as informações necessárias para que um segundo serviço possa fazer a liberação.
 
-O Segundo serviço é baseado de maneira simplificada uma integração bancaria. Ele não conhece as informações do comprador, apenas processa se o cartão de crédito tem limite o suficiente e executa a transação financeira. Ou registra um número de boleto vinculado ao cliente(Plataforma) que solicitou o pagamento.
+O Segundo serviço é baseado de maneira simplificada uma integração bancaria. Ele não conhece as informações do comprador, apenas faz o processamento do cartão de crédito e executa a transação financeira. Ou registra um número de boleto vinculado ao cliente(Plataforma) que solicitou o pagamento.
 
 Todas as informações são persistidas em um banco relacional  (PostgreSQL). 
 
