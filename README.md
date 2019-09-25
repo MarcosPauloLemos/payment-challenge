@@ -48,11 +48,11 @@ Em seguida, será executado de forma automática os passos para que a aplicaçã
 # Exemplos
 
 ## Solicitação de pagamento com boleto:
-*rota
+#### rota
 ```
 - POST: http://localhost:18080/payment/receive
 ```
-*Corpo
+#### Corpo
 ```
 {
     "clientId": 1,
@@ -65,7 +65,7 @@ Em seguida, será executado de forma automática os passos para que a aplicaçã
     "typeCod": 2
 }
 ```
-*Retorno
+#### Retorno
 ```
 {
     "authorizerNumber": 5,
@@ -74,11 +74,11 @@ Em seguida, será executado de forma automática os passos para que a aplicaçã
 }
 ```
 ## Solicitação de pagamento com Cartão de Crédito:
-*rota
+#### rota
 ```
 - POST: http://localhost:18080/payment/receive
 ```
-*Corpo
+#### Corpo
 ```
 {
     "clientId": 1,
@@ -97,7 +97,7 @@ Em seguida, será executado de forma automática os passos para que a aplicaçã
     "typeCod": 1
 }
 ```
-*Retorno
+#### Retorno
 ```
 {
     "authorizerNumber": 34,
@@ -106,12 +106,12 @@ Em seguida, será executado de forma automática os passos para que a aplicaçã
 }
 ```
 ## Consultar pagamentos de um determinado cliente (Plataforma):
-*rota
+#### rota
 ```
 - GET: http://localhost:18080/payment/payments/client/{cliend-id}
 ```
 obs: para {cliend-id} = 1
-*Restorno
+#### Restorno
 ```
 [{
         "id": 44,
@@ -148,12 +148,12 @@ obs: para {cliend-id} = 1
     }]
 ```
 ## Consultar pagamentos de um determinado comprador:
-*rota
+#### rota
 ```
 - GET: http://localhost:18080/payment/payments/buyer/{cpf}
 ```
 obs: para {cpf} = 1236547898
-*Restorno
+#### Restorno
 ```
 [{
         "id": 44,
@@ -193,5 +193,5 @@ obs: para {cpf} = 1236547898
 ## Mais informações
 Para mais informações ou importação dos exemplos utilizar a documentação disponíveis nos links
 (é necessário estar com a aplicação em execução):
-*Para payment-service: http://localhost:18080/swagger-ui.html
-*Para authorizer-service: http://localhost:18081/swagger-ui.html
+#### Para payment-service: http://localhost:18080/swagger-ui.html
+#### Para authorizer-service: http://localhost:18081/swagger-ui.html
