@@ -48,7 +48,7 @@ Em seguida, será executado de forma automática os passos para que a aplicaçã
 # Exemplos
 
 ## Solicitação de pagamento com boleto:
-#### rota
+#### Rota
 ```
 - POST: http://localhost:18080/payment/receive
 ```
@@ -74,7 +74,7 @@ Em seguida, será executado de forma automática os passos para que a aplicaçã
 }
 ```
 ## Solicitação de pagamento com Cartão de Crédito:
-#### rota
+#### Rota
 ```
 - POST: http://localhost:18080/payment/receive
 ```
@@ -106,7 +106,7 @@ Em seguida, será executado de forma automática os passos para que a aplicaçã
 }
 ```
 ## Consultar pagamentos de um determinado cliente (Plataforma):
-#### rota
+#### Rota
 ```
 - GET: http://localhost:18080/payment/payments/client/{cliend-id}
 ```
@@ -148,7 +148,7 @@ obs: para {cliend-id} = 1
     }]
 ```
 ## Consultar pagamentos de um determinado comprador:
-#### rota
+#### Rota
 ```
 - GET: http://localhost:18080/payment/payments/buyer/{cpf}
 ```
