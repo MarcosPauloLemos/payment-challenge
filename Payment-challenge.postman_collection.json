@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "19daa7aa-932b-4991-a85c-7c1e8bc5fbe0",
+		"name": "Payment-challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "receive-payment | credit card",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"clientId\": 1,\n    \"buyer\": {\n        \"name\": \"Eduardo Paiva\",\n        \"email\": \"eduardo.paiva@gmail.com\",\n        \"cpf\": 12365123123\n    },\n    \"cardDTO\":{\n    \t\"holderName\": \"EDU PAIVA\",\n    \t\"number\":65487894123,\n    \t\"expirationDate\": \"2019-11-07\",\n    \t\"cvv\": 123\n    },\n    \"amount\": 5000.5,\n    \"typeCod\": 2\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:18080/payment/receive",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "18080",
+					"path": [
+						"payment",
+						"receive"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "receive-payment | boleto",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"clientId\": 1,\n    \"buyer\": {\n        \"name\": \"Eduardo Paiva\",\n        \"email\": \"eduardo.paiva@gmail.com\",\n        \"cpf\": 1236547898\n    },\n    \"amount\": 50.5,\n    \"typeCod\": 2\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:18080/payment/receive",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "18080",
+					"path": [
+						"payment",
+						"receive"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list-payments | clientId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:18080/payment/payments/client/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "18080",
+					"path": [
+						"payment",
+						"payments",
+						"client",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list-payments | buyer cpf",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:18080/payment/payments/buyer/1236547898",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "18080",
+					"path": [
+						"payment",
+						"payments",
+						"buyer",
+						"1236547898"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
