@@ -111,7 +111,7 @@ Em seguida, será executado de forma automática os passos para que a aplicaçã
 - GET: http://localhost:18080/payment/payments/client/{cliend-id}
 ```
 obs: para {cliend-id} = 1
-#### Restorno
+#### Retorno
 ```
 [{
         "id": 44,
@@ -153,7 +153,7 @@ obs: para {cliend-id} = 1
 - GET: http://localhost:18080/payment/payments/buyer/{cpf}
 ```
 obs: para {cpf} = 1236547898
-#### Restorno
+#### Retorno
 ```
 [{
         "id": 44,
