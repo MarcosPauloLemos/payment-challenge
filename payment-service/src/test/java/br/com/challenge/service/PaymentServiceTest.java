@@ -1,7 +1,5 @@
 package br.com.challenge.service;
 
-import br.com.challenge.model.Buyer;
-import br.com.challenge.model.Card;
 import br.com.challenge.model.Payment;
 import br.com.challenge.model.dtos.BuyerDTO;
 import br.com.challenge.model.dtos.CardDTO;
