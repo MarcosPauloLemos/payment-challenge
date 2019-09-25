@@ -2,7 +2,6 @@ package br.com.challenge.model;
 
 
 import br.com.challenge.model.enums.PaymentStatus;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,9 +22,7 @@ public class Card {
     private LocalDate expirationDate;
     private Integer cvv;
     private BigDecimal amount;
-    @JsonIgnore
     private Long paymentNumber;
-    @JsonIgnore
     private Integer statusCod;
 
     public PaymentStatus getStatus(){
